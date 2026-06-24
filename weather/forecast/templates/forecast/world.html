@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weathon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'forecast/css/world.css' %}?v=2">
+</head>
+<body>
+    <div class="sky" id="sky" aria-hidden="true"></div>
+
+    <div id="globe" class="globe" role="img" aria-label="Interactive 3D globe. Drag to rotate, click a country, then click a city to read its weather."></div>
+
+    <div class="boot" id="boot" aria-hidden="true">
+        <div class="boot-ring"></div>
+        <p class="boot-text">ESTABLISHING ORBIT<span class="dots"></span></p>
+    </div>
+
+    <div class="hud">
+        <header class="brand">
+            <div class="mark" aria-hidden="true">
+                <span class="mark-ring"></span>
+                <span class="mark-dot"></span>
+            </div>
+            <div class="brand-text">
+                <h1>WEATHON</h1>
+                <p>GLOBAL WEATHER CONSOLE</p>
+            </div>
+        </header>
+
+        <div class="topright">
+            <div class="clock" id="clock" aria-live="off">--:--:-- UTC</div>
+            <a class="home-link" href="{% url 'home' %}">⌕ Forecast search</a>
+        </div>
+
+        <div class="telemetry" aria-hidden="true">
+            <div class="readout">
+                <span class="rk">FOCUS</span>
+                <span class="rv" id="t-focus">ORBIT</span>
+            </div>
+            <div class="readout">
+                <span class="rk">LAT</span>
+                <span class="rv" id="t-lat">—</span>
+            </div>
+            <div class="readout">
+                <span class="rk">LON</span>
+                <span class="rv" id="t-lon">—</span>
+            </div>
+            <button type="button" class="reset" id="reset">↺ RESET ORBIT</button>
+        </div>
+
+        <aside class="panel" id="panel" hidden aria-live="polite"></aside>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/globe.gl"></script>
+    <script src="{% static 'forecast/js/world.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weathon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'forecast/css/home.css' %}?v=5">
+</head>
+<body>
+    <canvas id="earthHorizonCanvas" aria-hidden="true"></canvas>
+
+    <header class="topbar">
+        <div class="brand">
+            <span class="mark" aria-hidden="true"></span>
+            <div class="brand-text">
+                <h1>WEATHON</h1>
+                <p>FORECAST</p>
+            </div>
+        </div>
+        <a class="globe-link" href="{% url 'world' %}">
+            <span class="globe-glyph" aria-hidden="true">◍</span>
+            Explore the globe
+        </a>
+    </header>
+
+    <main class="stage">
+        <section class="hero">
+            <h2 class="headline">Seven <span class="sun-word">bright</span> days, anywhere on Earth.</h2>
+            <p class="subhead">Search a city for its detailed forecast.</p>
+
+            <form id="search" class="search" role="search" autocomplete="off">
+                <span class="search-glyph" aria-hidden="true">⌕</span>
+                <label class="sr-only" for="q">Search a city</label>
+                <input id="q" type="text" placeholder="Search a city…" spellcheck="false"
+                       role="combobox" aria-expanded="false" aria-controls="suggest" aria-autocomplete="list">
+                <button type="submit">Search</button>
+                <ul id="suggest" class="suggest" role="listbox" hidden></ul>
+            </form>
+        </section>
+
+        <p id="status" class="status" role="status" aria-live="polite"></p>
+
+        <section id="result" class="result" hidden></section>
+    </main>
+
+    <script src="{% static 'forecast/js/earth-horizon.js' %}?v=2"></script>
+    <script src="{% static 'forecast/js/home.js' %}?v=3"></script>
+</body>
+</html>
